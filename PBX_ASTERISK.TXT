@@ -1,0 +1,10 @@
+[PBX]
+;RUTINA DE LLAMADA
+exten => _1XX,1,Answer()
+exten => _1XX,n,Set(arg=1)
+exten => _1XX,n,AGI(CheckCall.py,${arg})
+exten => _1XX,n,Set(cod=2)
+exten => _1XX,n,AGI(callrenovacion.py,${cod})
+exten => _1XX,n,Read(token,you-entered,4)
+exten => _1XX,n,AGI(CheckToken.py,${token})
+
